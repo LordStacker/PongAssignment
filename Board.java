@@ -1,16 +1,9 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
-/**
- * Write a description of class MyWorld here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+import greenfoot.*;  
 public class Board extends World
 {
 
-    int dx = 5;
-    int dy = 0;
+    int dx = 4;
+    int dy = 4;
     LavaFloor lf = new LavaFloor();
     Paddle pd = new Paddle();
     ComputerPaddle cpd = new ComputerPaddle();
@@ -34,7 +27,12 @@ public class Board extends World
     removeObject(this.cpd);
     addObject(cpd, Greenfoot.getRandomNumber(100)+20,Greenfoot.getRandomNumber(100)+50);
     }
-    wb.setLocation(wb.getX() + dx, wb.getY() + dy);
-    
+   /* wb.setLocation(wb.getX() + dx, wb.getY() + dy);
+    if(wb.getX() < 10 || wb.getX()>940){
+        dx = dx * -1;
+    }
+      if(wb.getY() < 10 || wb.getY() > 590){
+        dy = dy * -1;
+    }*/
     }        
 }

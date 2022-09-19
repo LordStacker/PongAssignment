@@ -17,4 +17,20 @@ public class WombatBall extends Actor
     getImage().scale(30,30);
     
     }
+    int dx = 4;
+    int dy = 4;
+    public void act()
+    {
+        this.setLocation(this.getX() + dx, this.getY() + dy);
+    if(this.getX() < 10 || this.getX()>940){
+        dx = dx * -1;
+    }
+      if(this.getY() < 10 || this.getY() > 590){
+        dy = dy * -1;
+    }
+        Paddle p = (Paddle) getOneIntersectingObject(Paddle.class);
+        if(p != null){
+           dy = dy * -1;
+        }
+    }
 }

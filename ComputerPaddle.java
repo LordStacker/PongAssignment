@@ -14,7 +14,7 @@ public class ComputerPaddle extends Actor
      */
     public ComputerPaddle () {
          super();
-         getImage().scale(200,200);
+         getImage().scale(320,100);
     }
     public void act(){
         move(5);
