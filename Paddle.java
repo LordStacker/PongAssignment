@@ -12,8 +12,16 @@ public class Paddle extends Actor
      * Act - do whatever the Paddle wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act()
-    {
-        // Add your action code here.
+    public Paddle () {
+         super();
+         getImage().scale(320,100);
     }
+     public void act() 
+    {
+       /* if(Greenfoot.mouseMoved(null)){
+            MouseInfo mouse = Greenfoot.getMouseInfo();
+            setLocation(getX(),mouse.getY());
+        }*/
+
+    }  
 }
