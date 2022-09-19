@@ -20,8 +20,10 @@ public class WombatBall extends Actor
     int dx = 4;
     int dy = 4;
     public void act()
+    //Movement of the Ball(Wombat)
     {
         this.setLocation(this.getX() + dx, this.getY() + dy);
+        //Bouncing Wombat Logic
     if(this.getX() < 10 || this.getX()>940){
         dx = dx * -1;
     }
@@ -32,6 +34,8 @@ public class WombatBall extends Actor
         if(p != null){
            dy = dy * -1;
         }
-    if(this.getY() <)
+     //Killing the wombat after cross the lava   
+    if(this.getY() > 590)
+    getWorld().removeObject(this);
     }
 }
