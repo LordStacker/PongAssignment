@@ -32,5 +32,6 @@ public class WombatBall extends Actor
         if(p != null){
            dy = dy * -1;
         }
+    if(this.getY() <)
     }
 }
