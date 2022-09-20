@@ -18,15 +18,17 @@ public class WombatBall extends Actor
     getImage().scale(40,40);
     directionUP=false;
     }
-    int dx = 4;
-    int dy = 4;
+    int dx = 2;
+    int dy = 2;
+    public int bounceCount = 0;
     public void act(){
-         directionUPDOWN();   
+         directionUpDown();   
          gameStop();
+         levelUp();
     }
     
     
-    public void directionUPDOWN(){
+    public void directionUpDown(){
         this.setLocation(this.getX() + dx, this.getY() + dy);
         if(this.getX() < 10 || this.getX()>940){
             dx = dx * -1;
@@ -43,13 +45,44 @@ public class WombatBall extends Actor
            dy = dy * -1;
            directionUP=!directionUP;
         }
+        if(cp!=null){
+            bounceCount++;
+        }
     }
-    
-    public void gameStop(){
+ 
+    private void gameStop(){
         if(this.getY() > 590){
             getWorld().removeObject(this);
             Greenfoot.stop();
         }
     }
+    
+    private int getbounceCounting(){
+       return bounceCount; 
+       }   
+    
+    public void levelUp(){
+        if (bounceCount == 10 || bounceCount == 20 || bounceCount == 30){
+            if (dx>0 && dy>0){ //down + right
+            dy = dy + 1;
+            dx = dx + 1;
+            }
+            if (dx>0 && dy<0){ //up + right
+            dy = dy - 1;
+            dx = dx + 1;
+            }
+            if (dx<0 && dy>0){ //down + left
+            dy = dy + 1;
+            dx = dx - 1;
+            }
+            if (dx<0 && dy<0){ //up + left
+            dy = dy - 1;
+            dx = dx - 1;
+            }
+        }
+    }
+    
 }
+    
+    
 

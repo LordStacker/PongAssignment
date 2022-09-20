@@ -17,7 +17,7 @@ public class Board extends World
         addObject(wb, 425, 300);
     }
     public void act(){ 
-    directionLEFTRIGHT();
+    directionLeftRight();
     cpdMovement();
    /* wb.setLocation(wb.getX() + dx, wb.getY() + dy);
     if(wb.getX() < 10 || wb.getX()>940){
@@ -28,7 +28,7 @@ public class Board extends World
     }*/
     }        
     
-    public void directionLEFTRIGHT(){
+    public void directionLeftRight(){
         if(Greenfoot.isKeyDown("left")){
         pd.move(-4);
         }
