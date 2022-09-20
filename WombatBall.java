@@ -46,7 +46,16 @@ public class WombatBall extends Actor
            directionUP=!directionUP;
         }
         if(cp!=null){
+            if(bounceCount == 0){
+            Board.level.add(1);
+            }
             bounceCount++;
+            if(bounceCount == 10){
+            Board.level.add(1);
+            }
+            if(bounceCount == 20){
+            Board.level.add(1);
+            }
         }
     }
  

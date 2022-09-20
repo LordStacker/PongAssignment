@@ -1,7 +1,7 @@
 import greenfoot.*;  
 public class Board extends World
 {
-
+    public static Counter level = new Counter("Level: ");
     int dx = 4;
     int dy = 4;
     LavaFloor lf = new LavaFloor();
@@ -14,7 +14,10 @@ public class Board extends World
         addObject(lf, 455, 650);
         addObject(pd, 425, 500);
         addObject(cpd,Greenfoot.getRandomNumber(950), 50);
+        addObject(level, 880, 50);
         addObject(wb, 425, 300);
+        
+        
     }
     public void act(){ 
     directionLeftRight();
