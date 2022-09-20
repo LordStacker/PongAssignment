@@ -1,7 +1,8 @@
 #Greenfoot project file
-class.ComputerPaddle.image=BananaPaddle.png
+class.Board.image=LightLavaBackground.png
+class.ComputerPaddle.image=BananaStage1.png
 class.LavaFloor.image=LavaLayerFloor.png
-class.Paddle.image=BananaPaddle.png
+class.Paddle.image=Brick.png
 class.WombatBall.image=wombat.png
 dependency1.from=Board
 dependency1.to=LavaFloor
@@ -18,11 +19,19 @@ dependency4.type=UsesDependency
 dependency5.from=WombatBall
 dependency5.to=Paddle
 dependency5.type=UsesDependency
+<<<<<<< HEAD
 editor.fx.0.height=830
 editor.fx.0.width=780
 editor.fx.0.x=761
 editor.fx.0.y=0
 height=838
+=======
+editor.fx.0.height=0
+editor.fx.0.width=0
+editor.fx.0.x=0
+editor.fx.0.y=0
+height=784
+>>>>>>> 0d8b648381ff234982ef4772afc368214e8db862
 package.numDependencies=5
 package.numTargets=5
 project.charset=UTF-8
@@ -47,7 +56,7 @@ target1.width=120
 target1.x=0
 target1.y=0
 target2.height=70
-target2.name=WombatBall
+target2.name=ComputerPaddle
 target2.showInterface=false
 target2.type=ClassTarget
 target2.width=120
@@ -61,7 +70,7 @@ target3.width=120
 target3.x=0
 target3.y=0
 target4.height=70
-target4.name=ComputerPaddle
+target4.name=WombatBall
 target4.showInterface=false
 target4.type=ClassTarget
 target4.width=120
@@ -75,7 +84,7 @@ target5.width=120
 target5.x=0
 target5.y=0
 version=3.0.0
-width=1550
+width=1235
 world.lastInstantiated=Board
 xPosition=0
 yPosition=0
