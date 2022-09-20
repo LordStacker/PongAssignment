@@ -14,7 +14,7 @@ public class Paddle extends Actor
      */
     public Paddle () {
          super();
-         getImage().scale(320,100);
+         getImage().scale(220,35);
     }
      public void act() 
     {
