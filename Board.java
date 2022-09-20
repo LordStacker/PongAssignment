@@ -17,16 +17,8 @@ public class Board extends World
         addObject(wb, 425, 300);
     }
     public void act(){ 
-    if(Greenfoot.isKeyDown("left")){
-        pd.move(-4);
-        }
-    if(Greenfoot.isKeyDown("right")){
-       pd.move(4);
-        }
-    if(cpd.isAtEdge()){
-    removeObject(this.cpd);
-    addObject(cpd, Greenfoot.getRandomNumber(100)+20,Greenfoot.getRandomNumber(100)+50);
-    }
+    directionLEFTRIGHT();
+    cpdMovement();
    /* wb.setLocation(wb.getX() + dx, wb.getY() + dy);
     if(wb.getX() < 10 || wb.getX()>940){
         dx = dx * -1;
@@ -35,4 +27,20 @@ public class Board extends World
         dy = dy * -1;
     }*/
     }        
+    
+    public void directionLEFTRIGHT(){
+        if(Greenfoot.isKeyDown("left")){
+        pd.move(-4);
+        }
+        if(Greenfoot.isKeyDown("right")){
+        pd.move(4);
+        }
+    }
+    
+    public void cpdMovement(){
+        if(cpd.isAtEdge()){
+            removeObject(this.cpd);
+            addObject(cpd, Greenfoot.getRandomNumber(100)+20,Greenfoot.getRandomNumber(100)+50);
+    }
+    }
 }
