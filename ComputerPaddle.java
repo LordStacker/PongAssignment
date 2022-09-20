@@ -12,9 +12,13 @@ public class ComputerPaddle extends Actor
      * Act - do whatever the ComputerPaddle wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    private GreenfootImage damnBanana;
     public ComputerPaddle () {
          super();
          getImage().scale(320,100);
+         //damnBanana = new GreenfootImage("BananaStages2.png");
+         //setImage(damnBanana);
+         
     }
     public void act(){
         move();
@@ -22,5 +26,9 @@ public class ComputerPaddle extends Actor
     
     public void move(){
         move(5);
+    }
+    
+    public void changeTexture(){
+        
     }
 }
