@@ -20,6 +20,26 @@ public class WombatBall extends Actor
     }
     int dx = 4;
     int dy = 4;
+<<<<<<< HEAD
+    public void act()
+    //Movement of the Ball(Wombat)
+    {
+        this.setLocation(this.getX() + dx, this.getY() + dy);
+        //Bouncing Wombat Logic
+    if(this.getX() < 10 || this.getX()>940){
+        dx = dx * -1;
+    }
+      if(this.getY() < 10 || this.getY() > 590){
+        dy = dy * -1;
+    }
+        Paddle p = (Paddle) getOneIntersectingObject(Paddle.class);
+        if(p != null){
+           dy = dy * -1;
+        }
+     //Killing the wombat after cross the lava   
+    if(this.getY() > 590)
+    getWorld().removeObject(this);
+=======
     public void act(){
          directionUPDOWN();   
          gameStop();
@@ -50,6 +70,7 @@ public class WombatBall extends Actor
             getWorld().removeObject(this);
             Greenfoot.stop();
         }
+>>>>>>> 0d8b648381ff234982ef4772afc368214e8db862
     }
 }
 
