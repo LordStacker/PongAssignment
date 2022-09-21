@@ -2,6 +2,8 @@ import greenfoot.*;
 public class Board extends World
 {
     public static Counter level = new Counter("Level: ");
+    public static Counter Life = new Counter("Life: ");
+    public static Counter points = new Counter("Points: ");
     int dx = 4;
     int dy = 4;
     LavaFloor lf = new LavaFloor();
@@ -15,20 +17,16 @@ public class Board extends World
         addObject(pd, 425, 500);
         addObject(cpd,Greenfoot.getRandomNumber(950), 50);
         addObject(level, 880, 50);
+        addObject(points, 880, 80);
         addObject(wb, 425, 300);
+        addObject(Life, 880, 550);
+        Life.setValue(3);
         
         
     }
     public void act(){ 
     directionLeftRight();
     cpdMovement();
-   /* wb.setLocation(wb.getX() + dx, wb.getY() + dy);
-    if(wb.getX() < 10 || wb.getX()>940){
-        dx = dx * -1;
-    }
-      if(wb.getY() < 10 || wb.getY() > 590){
-        dy = dy * -1;
-    }*/
     }        
     
     public void directionLeftRight(){
@@ -44,6 +42,10 @@ public class Board extends World
         if(cpd.isAtEdge()){
             removeObject(this.cpd);
             addObject(cpd, Greenfoot.getRandomNumber(100)+20,Greenfoot.getRandomNumber(100)+50);
+           /* if(level.getValue() == 3){
+                removeObject(this.cpd);
+                addObject(cpd, Greenfoot.getRandomNumber(100)+20,Greenfoot.getRandomNumber(100)+50);
+            }*/
     }
     }
 }
