@@ -18,9 +18,11 @@ public class WombatBall extends Actor
     getImage().scale(40,40);
     directionUP=false;
     }
-    int dx = 2;
-    int dy = 2;
-    public int bounceCount = 0;
+    int dx = 3;
+    int dy = 3;
+    public static int bounceCount = 0;
+    public static int levelTwo = 10;
+    public static int levelThree = 20;
     public void act(){
          directionUpDown();   
          gameStop();
@@ -31,53 +33,111 @@ public class WombatBall extends Actor
     public void directionUpDown(){
         this.setLocation(this.getX() + dx, this.getY() + dy);
         if(this.getX() < 10 || this.getX()>940){
+            Greenfoot.playSound("BounceWombat.wav");
             dx = dx * -1;
         }   
         if(this.getY() < 10 || this.getY() > 590){
             if(directionUP){
                 directionUP=!directionUP;
             }
+            Greenfoot.playSound("BounceWombat.wav");
             dy = dy * -1;
         }
         Paddle p = (Paddle) getOneIntersectingObject(Paddle.class);
         ComputerPaddle cp = (ComputerPaddle) getOneIntersectingObject(ComputerPaddle.class);
-        if(p != null || cp!=null){
+        if(p != null){
+           Greenfoot.playSound("BounceWombat.wav");
            dy = dy * -1;
            directionUP=!directionUP;
         }
-        if(cp!=null){
-            bounceCount++;
+        if(cp != null && directionUP){
+           Greenfoot.playSound("BounceWombat.wav");
+           dy = dy * -1;
+           directionUP=!directionUP;
+           Board.points.add(1);
+           bounceCount++;
+           if(bounceCount == 1){
+            Board.level.add(1);
+            }
+            if(bounceCount == 10){
+            Board.level.add(1);
+            }
+            if(bounceCount == 20){
+            Board.level.add(1);
+            }
+            if(bounceCount == 30){
+                Greenfoot.setWorld(new WinScene());
+                Greenfoot.playSound("WinSound.wav"); 
+                Board.points.add(-Board.points.getValue());
+                Board.level.add(-3);
+                bounceCount-=bounceCount;
+                }
+            }
+          
         }
-    }
  
     private void gameStop(){
         if(this.getY() > 590){
-            getWorld().removeObject(this);
-            Greenfoot.stop();
+            //getWorld().removeObject(this);
+            //Discounting 1 life for every death of the wombat
+            Board.Life.add(-1);
+            //Greenfoot.stop();
+            if(Board.Life.getValue() == 0){
+                Greenfoot.setWorld(new GameOver());
+                Greenfoot.playSound("GameOverSound.wav");
+                Board.points.add(-Board.points.getValue());
+                bounceCount-=bounceCount;
+                if(Board.level.getValue() == 1){ 
+                    Board.level.add(-1);
+                }
+                else if (Board.level.getValue() == 2){
+                    Board.level.add(-2);
+                }
+                else if (Board.level.getValue() == 3){
+                    Board.level.add(-3);
+                }
+            }
+            else{
+                setLocation(300, 300);
+            }
         }
     }
     
-    private int getbounceCounting(){
-       return bounceCount; 
-       }   
-    
     public void levelUp(){
-        if (bounceCount == 10 || bounceCount == 20 || bounceCount == 30){
+        if (bounceCount == levelTwo){
             if (dx>0 && dy>0){ //down + right
-            dy = dy + 1;
-            dx = dx + 1;
+            dy = 3;
+            dx = 3;
             }
-            if (dx>0 && dy<0){ //up + right
-            dy = dy - 1;
-            dx = dx + 1;
+            else if (dx>0 && dy<0){ //up + right
+            dy = -3;
+            dx = 3;
             }
-            if (dx<0 && dy>0){ //down + left
-            dy = dy + 1;
-            dx = dx - 1;
+            else if (dx<0 && dy>0){ //down + left
+            dy = 3;
+            dx = -3;
             }
-            if (dx<0 && dy<0){ //up + left
-            dy = dy - 1;
-            dx = dx - 1;
+            else if (dx<0 && dy<0){ //up + left
+            dy = -3;
+            dx = -3;
+            }
+        }
+        if (bounceCount == levelThree){
+            if (dx>0 && dy>0){ //down + right
+            dy = 5;
+            dx = 5;
+            }
+            else if (dx>0 && dy<0){ //up + right
+            dy = -5;
+            dx = 5;
+            }
+            else if (dx<0 && dy>0){ //down + left
+            dy = 5;
+            dx = -5;
+            }
+            else if (dx<0 && dy<0){ //up + left
+            dy = -5;
+            dx = -5;
             }
         }
     }
