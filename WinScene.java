@@ -17,4 +17,10 @@ public class WinScene extends World
             addObject(new BananaSlice2(), Greenfoot.getRandomNumber(950), 0);
         }
     }
+     public void act()
+    {
+        if(Greenfoot.isKeyDown("enter")){
+        Greenfoot.setWorld(new Intro());
+        }
+    }
 }

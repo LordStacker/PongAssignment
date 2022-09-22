@@ -45,17 +45,17 @@ public class WombatBall extends Actor
         }
         Paddle p = (Paddle) getOneIntersectingObject(Paddle.class);
         ComputerPaddle cp = (ComputerPaddle) getOneIntersectingObject(ComputerPaddle.class);
-        if(p != null || cp!=null && directionUP){
+        if(p != null){
            Greenfoot.playSound("BounceWombat.wav");
            dy = dy * -1;
-           bounceCount++;
-           Board.points.add(1);
            directionUP=!directionUP;
         }
         if(cp != null && directionUP){
+           Greenfoot.playSound("BounceWombat.wav");
            dy = dy * -1;
            directionUP=!directionUP;
-          
+           Board.points.add(1);
+           bounceCount++;
            if(bounceCount == 1){
             Board.level.add(1);
             }
@@ -67,12 +67,14 @@ public class WombatBall extends Actor
             }
             if(bounceCount == 30){
                 Greenfoot.setWorld(new WinScene());
-                Greenfoot.playSound("WinSound.wav");
+                Greenfoot.playSound("WinSound.wav"); 
+                Board.points.add(-Board.points.getValue());
+                Board.level.add(-3);
+                bounceCount-=bounceCount;
+                }
             }
           
         }
-        
-    }
  
     private void gameStop(){
         if(this.getY() > 590){
@@ -83,6 +85,17 @@ public class WombatBall extends Actor
             if(Board.Life.getValue() == 0){
                 Greenfoot.setWorld(new GameOver());
                 Greenfoot.playSound("GameOverSound.wav");
+                Board.points.add(-Board.points.getValue());
+                bounceCount-=bounceCount;
+                if(Board.level.getValue() == 1){ 
+                    Board.level.add(-1);
+                }
+                else if (Board.level.getValue() == 2){
+                    Board.level.add(-2);
+                }
+                else if (Board.level.getValue() == 3){
+                    Board.level.add(-3);
+                }
             }
             else{
                 setLocation(300, 300);
