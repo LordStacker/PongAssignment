@@ -106,20 +106,20 @@ public class WombatBall extends Actor
     public void levelUp(){
         if (bounceCount == levelTwo){
             if (dx>0 && dy>0){ //down + right
-            dy = 3;
-            dx = 3;
+            dy = 4;
+            dx = 4;
             }
             else if (dx>0 && dy<0){ //up + right
-            dy = -3;
-            dx = 3;
+            dy = -4;
+            dx = 4;
             }
             else if (dx<0 && dy>0){ //down + left
-            dy = 3;
-            dx = -3;
+            dy = 4;
+            dx = -4;
             }
             else if (dx<0 && dy<0){ //up + left
-            dy = -3;
-            dx = -3;
+            dy = -4;
+            dx = -4;
             }
         }
         if (bounceCount == levelThree){

@@ -32,10 +32,17 @@ public class Board extends World
     public void directionLeftRight(){
         if(Greenfoot.isKeyDown("left")){
         pd.move(-4);
+            if(wb.bounceCount > wb.levelThree){
+            pd.move(-5);
+            }
         }
         if(Greenfoot.isKeyDown("right")){
         pd.move(4);
+            if(wb.bounceCount > wb.levelThree){
+            pd.move(5);
+            }
         }
+        
     }
     
     public void cpdMovement(){
