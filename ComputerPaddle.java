@@ -1,26 +1,35 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
-/**
- * Write a description of class ComputerPaddle here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+import greenfoot.*; 
 public class ComputerPaddle extends Actor
 {
-    /**
-     * Act - do whatever the ComputerPaddle wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private GreenfootImage banana1;
+    private GreenfootImage banana2;
+    private GreenfootImage banana3;
     public ComputerPaddle () {
          super();
-         getImage().scale(320,100);
+            banana1 = new GreenfootImage("BananaStage1.png");
+            banana2 = new GreenfootImage("BananaStage2.png");
+            banana3 = new GreenfootImage("BananaStage3.png");
+
     }
     public void act(){
         move();
+        changeTexture();
     }
     
     public void move(){
         move(5);
     }
-}
+    
+    public void changeTexture(){
+        if(WombatBall.bounceCount < 10){
+                setImage(banana1);
+            }
+        if (WombatBall.bounceCount == WombatBall.levelTwo ){
+                setImage(banana2);
+            }
+        if (WombatBall.bounceCount == WombatBall.levelThree){
+                setImage(banana3);
+            }
+        }
+    }
+
